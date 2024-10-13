@@ -2,10 +2,14 @@
 
 One of FlexPower's main products is the so-called RouteToMarket: basically bringing the energy produced by renewables' 
 assets to the european electricity markets.
+
 The idea is that FlexPower signs contracts with the owners of renewable assets, and then sells the energy produced by these assets on the market. 
+
 At the end of each month, FlexPower invoices the asset owners based on the production of their assets: 
 FlexPower pays the asset owner an agreed upon price for each produced mwh and the asset owner pays FlexPower 
-a fee for the services provided, per mwh. There are different pricing and fee models, i.e. ways to compute the price and fee, to accomodate different types of assets and customoers.
+a fee for the services provided, per mwh. 
+
+There are different pricing and fee models, i.e. ways to compute the price and fee, to accommodate different types of assets and customoers.
 
 ## Assets "base" data
 

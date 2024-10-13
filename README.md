@@ -14,17 +14,17 @@ There are different pricing and fee models, i.e. ways to compute the price and f
 ## Assets "base" data
 
 The assets' base data is stored as a CSV file, `assets_base_data.csv`. It contains the following columns:
-- asset_id: a unique alphanumerical identifier for the asset.
-- metering_point_id: a unique alphanumerical identifier for the asset's metering point.
-- capacity: the installed capacity of the asset, in MW.
-- technology: the technology used by the asset, can be either "solar" or "wind".
-- contract_begin: the date when the asset's contract with FlexPower began.
-- contract_end: the date when the asset's contract with FlexPower ends, can be none.
-- price_model: the pricing model used by the asset, can be either "fixed" or "market".
-- price: the price paid by FlexPower to the asset owner, in €/MWh, if asset in the "fixed" price model.
-- fee_model: the fee model used by the asset, can be either "fixed_as_produced", "fixed_for_capacity" or "percent_of_market".
-- fee: the fee paid by the asset owner to FlexPower, in €/MWh, if asset in the "fixed" fee model.
-- fee_percent: percent of the market value paid by the asset owner to FlexPower per mwh, in %, if asset in the "percent_of_market" fee model.
+- **asset_id**: a unique alphanumerical identifier for the asset.
+- **metering_point_id**: a unique alphanumerical identifier for the asset's metering point.
+- **capacity**: the installed capacity of the asset, in MW.
+- **technology**: the technology used by the asset, can be either "solar" or "wind".
+- **contract_begin**: the date when the asset's contract with FlexPower began.
+- **contract_end**: the date when the asset's contract with FlexPower ends, can be none.
+- **price_model**: the pricing model used by the asset, can be either "**fixed**" or "**market**".
+- **price**: the price paid by FlexPower to the asset owner, in €/MWh, if asset in the "fixed" price model.
+- **fee_model**: the fee model used by the asset, can be either "**fixed_as_produced**", "**fixed_for_capacity**" or "**percent_of_market**".
+- **fee**: the fee paid by the asset owner to FlexPower, in €/MWh, if asset in the "fixed" fee model.
+- **fee_percent**: percent of the market value paid by the asset owner to FlexPower per mwh, in %, if asset in the "percent_of_market" fee model.
 
 ##  Forecasts and measured production
 
@@ -93,9 +93,9 @@ We can then compute and imbalance cost for each asset in our portfolio.
 ## The challenge
 
 Your goal is to help FlexPower make sense of all this data, in particular:
-- compute the trading revenues
-- compute the imbalance cost for each asset
-- compute invoices for each asset
+- compute the trading revenues.
+- compute the imbalance cost for each asset.
+- compute invoices for each asset.
 - create a report that helps FlexPower understand the performance of its portfolio.
 
 You can use any tools you want, but we recommend using python for any coding involved and SQL for queries and data processing.

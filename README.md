@@ -72,6 +72,10 @@ generated for 5mw at 10 euros/mwh.
 The trading revenues are calculated by multiplying the quantity with the price over all trades: for a buy trade, the revenue is 
 negative, for a sell deal, the revenue is positive.
 
+A list of trades that our trading floor executed are provided as a json. Quantities are in megawatt and prices are in euro per megawatt-hour.
+
+We also provide and index price for the market, in a csv file. The index price is the quantity weighted average price of all trades executed on the market, in euro per megawatt-hour.
+
 ## Invoicing
 In the invoices we send out to the customers, we need to compute the following entries:
 * infeed payout: multiplying the production of the asset by the price we agreed upon with the asset owner, depending on the price model. 
@@ -90,8 +94,11 @@ For each of these entries we also compute the unitary net amount, the VAT (at wi
 
 The electricity grid function properly when the production and consumption are balanced at all times and there are financial incentives for that.
 
-If our forecasted production is different than the measured production, we have an imbalance volume and for that we have to pay a penalty.
-We can then compute and imbalance cost for each asset in our portfolio.
+If our forecasted production is different from the measured production, we have an imbalance volume and for that we have to pay a penalty. 
+
+The imbalance penalty is provided as a csv file and the unit is euro per megawatt-hour.
+
+We can then compute the imbalance cost for each asset in our portfolio.
 
 ## The challenge
 

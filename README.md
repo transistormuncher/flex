@@ -32,7 +32,7 @@ The assets' base data is stored as a CSV file, `assets_base_data.csv`. It contai
 For each asset, FlexPower produces a production forecast. This forecast is updated every hour and is stored as a json. 
 The production is forecasted for the next 24 hours with an hourly resolution. 
 Each point represents the average power produced by the asset over a given hour in the future.
-The format is as follows:
+The values are in kilowatt and the format is as follows:
 
 ```json
 {
@@ -48,7 +48,9 @@ The format is as follows:
 ### Measured production:
 Each asset is connected to the grid through a so-called "metering point". 
 The production measured at this point is communicated to FlexPower by the Distribution System Operator (DSO) every day for the previous day. 
-The values here are used to invoice the asset owner and we get data for all assets at once, in a csv file.
+
+The values here are used to invoice the asset owner and we get data for all assets at once, in a csv file. The unit is kilowatt.
+
 
 ## Energy Trading in a Nutshell
 
@@ -81,6 +83,7 @@ In the invoices we send out to the customers, we need to compute the following e
     * For the "fixed_as_produced" fee model, we multiply the total produced volume with the fee from the base data.
     * For the "fixed_for_capacity" fee model, we multiply the installed capacity of the asset with the fee from the base data.
     * For the "percent_of_market" fee model, we multiply the total produced volume of the asset with the average of the market index price and the fee percent from the base data.
+
 For each of these entries we also compute the unitary net amount, the VAT (at with a rate of 19%) and the total gross amount.
 
 ## Imbalance
@@ -96,8 +99,10 @@ Your goal is to help FlexPower make sense of all this data, in particular:
 - compute the trading revenues.
 - compute the imbalance cost for each asset.
 - compute invoices for each asset.
-- create a report that helps FlexPower understand the performance of its portfolio.
+- create a report that helps FlexPower understand the performance of its portfolio and each single asset.
 
 You can use any tools you want, but we recommend using python for any coding involved and SQL for queries and data processing.
+Feel free to add any indicators and/or plots that you feel would help presenting these results to stakeholders and 
+report any insights that might emerge from the data. 
 
 

@@ -1,17 +1,20 @@
 # Ops Data Challenge: managing a renewables portfolio
 
-One of FlexPower's main products is the so-called RouteToMarket: basically bringing the energy produced by renewables' 
+One of FlexPower's main products is the so-called **RouteToMarket**: bringing the energy produced by renewables' 
 assets to the european electricity markets.
 
-The idea is that FlexPower signs contracts with the owners of renewable assets, and then sells the energy produced by these assets on the market. 
+FlexPower signs contracts with renewable assets' owners, and then sells the energy produced by these assets on the market, hopefully in a profitable way thanks to its trading expertise. 
 
 At the end of each month, FlexPower invoices the asset owners based on the production of their assets: 
 FlexPower pays the asset owner an agreed upon price for each produced mwh and the asset owner pays FlexPower 
-a fee for the services provided, per mwh. 
+a fee for the services provided, per mwh.\
+There are different pricing and fee models, i.e. ways to compute the price and fee, to accommodate different types of assets and customers.\
 
-There are different pricing and fee models, i.e. ways to compute the price and fee, to accommodate different types of assets and customoers.
+In this challenge, we will look at different aspects of marketing renewables and present different data entities involved.\
+The goal will be to compute different financial flows and present them in a way that helps stakeholders understand the performance of the portfolio and of single assets.
 
 ## Assets "base" data
+With **base data** we usually mean static attributes of assets. These can be technical, contractual or financial.
 
 The assets' base data is stored as a CSV file, `assets_base_data.csv`. It contains the following columns:
 - **asset_id**: a unique alphanumerical identifier for the asset.
@@ -29,8 +32,11 @@ The assets' base data is stored as a CSV file, `assets_base_data.csv`. It contai
 ##  Forecasts and measured production
 
 ### Forecasts:
-For each asset, FlexPower produces a production forecast. This forecast is updated every hour and is stored as a json. 
-The production is forecasted for the next 24 hours with an hourly resolution. 
+
+For each asset, FlexPower forecasts the electricity production. 
+This forecast allows FlexPower to know how much electricity will be available to sell on the markets for a given hour in the future.
+
+This forecast is updated every hour and is stored as a json. The production is forecasted for the next 24 hours with an hourly resolution.\ 
 Each point represents the average power produced by the asset over a given hour in the future.
 The values are in kilowatt and the format is as follows:
 
@@ -46,7 +52,7 @@ The values are in kilowatt and the format is as follows:
 ```
 
 ### Measured production:
-Each asset is connected to the grid through a so-called "metering point". 
+Each asset is connected to the electricity grid through a so-called "metering point". 
 The production measured at this point is communicated to FlexPower by the Distribution System Operator (DSO) every day for the previous day. 
 
 The values here are used to invoice the asset owner and we get data for all assets at once, in a csv file. The unit is kilowatt.
@@ -108,7 +114,7 @@ Your goal is to help FlexPower make sense of all this data, in particular:
 - compute invoices for each asset.
 - create a report that helps FlexPower understand the performance of its portfolio and each single asset.
 
-You can use any tools you want, but we recommend using python for any coding involved and SQL for queries and data processing.
+You can use any tools you want, but we recommend using python for any coding involved and SQL for queries and data processing.\
 Feel free to add any indicators and/or plots that you feel would help presenting these results to stakeholders and 
 report any insights that might emerge from the data. 
 

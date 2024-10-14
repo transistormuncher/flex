@@ -84,8 +84,7 @@ We also provide and index price for the market, in a csv file. The index price i
 
 ## Invoicing
 In the invoices we send out to the customers, we need to compute the following entries:
-* infeed payout: multiplying the production of the asset by the price we agreed upon with the asset owner, depending on the price model. 
-
+* infeed payout: multiplying the production of the asset by the price we agreed upon with the asset owner, depending on the price model.
     * For the "fixed" pricing model, we just multiply the total produced volume with the price from the base data. This is a more "conservative" pricing model.
     * For the "market" pricing model, we multiply the production of the asset, hour by hour, with the market index price. This is a price model that is more sensitive to the market price fluctuations and can yield a better payout if the asset is producing at times where the price on the market is high.
 
@@ -98,12 +97,10 @@ For each of these entries we also compute the unitary net amount, the VAT (at wi
 
 ## Imbalance
 
-The electricity grid function properly when the production and consumption are balanced at all times and there are financial incentives for that.
+The electricity grid functions properly only when the production and consumption are balanced at all times and there are financial incentives to achieve that.
 
-If our forecasted production is different from the measured production, we have an imbalance volume and for that we have to pay a penalty. 
-
+If our forecasted production is different from the measured production (higher or lower), we have an imbalance volume and for that we have to pay a penalty.\
 The imbalance penalty is provided as a csv file and the unit is euro per megawatt-hour.
-
 We can then compute the imbalance cost for each asset in our portfolio.
 
 ## The challenge

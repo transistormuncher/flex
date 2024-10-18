@@ -65,7 +65,7 @@ Energy trading happens in an **exchange**, a market where traders working for en
 energy consuming industries like steel and trains...) submit orders to buy and sell energy.
 One of the major exchanges in Europe is called [**EPEX**](https://en.wikipedia.org/wiki/European_Power_Exchange).
 
-These orders consist of a quantity (in Megawatt, rounded to one decimal) over a predefined period of
+These orders consist of a volume (in Megawatt, rounded to one decimal) over a predefined period of
 time, called **delivery period** (for example between 12:00, the **delivery start** and 13:00, 
 the **delivery end**, on a given day) and for a given price per megawatt hour (referred to as mwh).
 
@@ -75,12 +75,12 @@ For example if the orderbook contains an order to sell 10 mw for 10 euros/mwh an
 submits an order to buy 5 mw for 11 euros/mwh, the orders are matched by the exchange and a trade is 
 generated for 5mw at 10 euros/mwh.
 
-The trading revenues are calculated by multiplying the quantity with the price over all trades: for a buy trade, the revenue is 
+The trading revenues are calculated by multiplying the volume with the price over all trades: for a buy trade, the revenue is 
 negative, for a sell deal, the revenue is positive.
 
-A list of trades that our trading floor executed are provided as a json. Quantities are in megawatt and prices are in euro per megawatt-hour.
+A list of trades that our trading floor executed are provided as a json. Volumes are in megawatt and prices are in euro per megawatt-hour.
 
-We also provide and index price for the market, in a csv file. The index price is the quantity weighted average price of all trades executed on the market, in euro per megawatt-hour.
+We also provide and index price for the market, in a csv file. The index price is the volume weighted average price of all trades executed on the market, in euro per megawatt-hour.
 
 ## Invoicing
 In the invoices we send out to the customers, we need to compute the following entries:

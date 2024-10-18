@@ -1,2 +1,2 @@
-create schema if not exists base;
+CREATE SCHEMA IF NOT EXISTS base;
 

@@ -30,7 +30,12 @@ preprocess_measured AS (
 ),
 imbalance AS (
     SELECT
-        preprocess_forecast.delivery_start, preprocess_forecast.asset_id, forecast_production__kwh, measured_production__kwh, forecast_production__kwh - measured_production__kwh AS delta, imbalance_penalty__eur_per_mwh, abs(forecast_production__kwh - measured_production__kwh) * -1 / 1000 * imbalance_penalty__eur_per_mwh AS imbalance_penalty
+        preprocess_forecast.delivery_start,
+        preprocess_forecast.asset_id,
+        forecast_production__kwh,
+        measured_production__kwh,
+        forecast_production__kwh - measured_production__kwh AS delta,
+        imbalance_penalty__eur_per_mwh, abs(forecast_production__kwh - measured_production__kwh) * -1 / 1000 * imbalance_penalty__eur_per_mwh AS imbalance_penalty
     FROM
         preprocess_forecast
         LEFT JOIN preprocess_measured ON preprocess_forecast.asset_id = preprocess_measured.asset_id

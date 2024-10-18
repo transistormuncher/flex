@@ -1,0 +1,32 @@
+FROM python:3.11
+
+RUN apt-get update && apt-get upgrade -y && apt-get install -y rsync git
+RUN apt-get install postgresql-client -y
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# dbt-runner app
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONPATH /flex-dbt
+ENV DBT_PROFILES_DIR /flex-dbt/dbt
+ENV DBT_MODULES_DIR /flex-dbt
+WORKDIR /flex-dbt
+
+COPY docker/profiles.yml dbt/profiles.yml
+COPY requirements.txt requirements.txt
+
+COPY flex/models models
+COPY flex/macros macros
+COPY flex/snapshots snapshots
+COPY flex/tests tests
+COPY flex/dbt_project.yml dbt_project.yml
+
+
+RUN pip install --upgrade pip
+RUN pip install --ignore-installed -r requirements.txt && rm -rf /root/.cache
+
+
+
+
+

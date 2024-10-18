@@ -1,0 +1,46 @@
+version: '3.9'
+
+volumes:
+  db_data:
+
+services:
+  dbt:
+    networks:
+      flex-network:
+    container_name: dbt
+    hostname: dbt
+    command: tail -F /dev/null
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-dbt
+    environment:
+      - PGPASSWORD=${POSTGRES_PW}
+      - PROD_DB_HOST=${POSTGRES_HOST}
+      - PROD_DB_PORT=${POSTGRES_PORT}
+      - PROD_DB_USER=${POSTGRES_USER}
+      - PROD_DB_PW=${POSTGRES_PW}
+      - PROD_DB_NAME=${POSTGRES_DB_NAME}
+  postgres-dwh-db:
+    networks:
+      flex-network:
+    container_name: dwh-db
+    hostname: dwh-db
+    image: postgres:latest
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./docker/dwh_db/db_setup.sql:/docker-entrypoint-initdb.d/db_setup.sql
+      - ./docker/dwh_db/postgresql.conf:/etc/postgresql/postgresql.conf
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB_NAME}
+    ports:
+      - "5433:5432"
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+networks:
+  flex-network:
+    driver: bridge
+
+
+

@@ -8,8 +8,8 @@ load_dotenv()
 
 db_name = os.environ['POSTGRES_DB_NAME']
 user = os.environ['POSTGRES_USER']
-host = os.environ['POSTGRES_HOST']
-port = os.environ['POSTGRES_PORT']
+host = "localhost" # os.environ['POSTGRES_HOST']
+port = "5433" # os.environ['POSTGRES_PORT']
 pw = os.environ['POSTGRES_PW']
 db_engine = sqlalchemy.create_engine(f'postgresql+psycopg2://{user}:{pw}@{host}:{port}/{db_name}')
 conn = db_engine.connect()

@@ -4,16 +4,16 @@ WITH preprocess_imbalance AS (
         delivery_start::timestamp with time zone AS delivery_start,
         imbalance_penalty AS imbalance_penalty__eur_per_mwh
     FROM
-        base.imbalance_penalty
+        raw_data.imbalance_penalty
 ),
 preprocess_forecast AS (
     SELECT
-        INDEX::timestamp with time zone AS delivery_start,
+        index::timestamp with time zone AS delivery_start,
         asset_id,
-    VALUES
+    values
         AS forecast_production__kwh
     FROM
-        base.forecasts
+        raw_data.forecasts
 ),
 preprocess_measured AS (
     SELECT
@@ -21,7 +21,7 @@ preprocess_measured AS (
         measured.delivery_start::timestamp with time zone AS delivery_start,
         measured_production__kwh
     FROM
-        base.measured
+        raw_data.measured
         CROSS JOIN LATERAL (
             VALUES ('a1', mp_1),
                 ('a2', mp_2),

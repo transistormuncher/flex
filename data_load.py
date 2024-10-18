@@ -14,6 +14,8 @@ pw = os.environ['POSTGRES_PW']
 db_engine = sqlalchemy.create_engine(f'postgresql+psycopg2://{user}:{pw}@{host}:{port}/{db_name}')
 conn = db_engine.connect()
 
+conn.execute(sqlalchemy.schema.CreateSchema("raw_data", if_not_exists=True))
+conn.commit()
 
 df_dict = {}
 df_dict["asset"] = pd.read_csv("assets_base_data.csv", sep=";")
@@ -28,4 +30,4 @@ for i in range(1, 5):
 df_dict["forecasts"] = pd.concat(df_list).reset_index()
 
 for key, df in df_dict.items():
-    df.to_sql(name=key, con=conn, schema="base", if_exists="replace", index=False)
+    df.to_sql(name=key, con=conn, schema="raw_data", if_exists="replace", index=False)

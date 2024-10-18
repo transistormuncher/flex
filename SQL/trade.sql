@@ -13,7 +13,7 @@ WITH preprocess_trade AS (
         delivery_start::timestamp with time zone AS delivery_start,
         delivery_end
     FROM
-        base.trades
+        raw_data.trades
 )
 SELECT
     execution_time::date AS date,

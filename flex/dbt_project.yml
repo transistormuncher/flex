@@ -33,12 +33,13 @@ models:
   flex:
     # Config indicated by + and applies to all files under models/example/
 
-    +materialized: table
+    +materialized: view
     0_base:
       +schema: base
     1_transform:
       +schema: transform
     2_dim:
       +schema: dim
+      +materialized: table
     3_report:
       +schema: report

@@ -1,0 +1,36 @@
+
+version: 2
+
+models:
+  - name: asset_fact
+    description: "Base data about all assets"
+    columns:
+      - name: asset_id
+        description: "The unique id and primary key for this table."
+        data_tests:
+          - unique
+          - not_null
+  - name: imbalance_fact
+    description: "Hourly imbalances between forecasted and measured energy production per asset."
+    columns:
+      - name: imbalance_id
+        description: "Surrogate unique id consisting of the asset_id and the delivery time."
+        data_tests:
+          - unique
+          - not_null
+  - name: production_fact
+    description: "Hourly measured energy production per asset and revenue generated."
+    columns:
+      - name: production_id
+        description: "Surrogate unique id consisting of the asset_id and the delivery time."
+        data_tests:
+          - unique
+          - not_null
+  - name: trade_fact
+    description: "Trade data"
+    columns:
+      - name: trade_id
+        description: "Unique trade id and primary key for this table."
+        data_tests:
+          - unique
+          - not_null
